@@ -2,7 +2,11 @@
   "name": "@phixid/in-memory-store",
   "version": "1.0.0",
   "description": "An in-memory data-store intended to be used as a simple cache",
-  "main": "dist/index.js",
   "author": "Kristof Hermans <kristof.hermans.kh@gmail.com>",
+  "main": "dist/index.js",
+  "repository": {
+    "url": "https://github.com/phixid/in-memory-store.git",
+    "type": "GIT"
+  },
   "license": "MIT"
 }
