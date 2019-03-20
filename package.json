@@ -1,6 +1,6 @@
 {
   "name": "@phixid/in-memory-store",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "An in-memory data-store intended to be used as a simple cache",
   "author": "Kristof Hermans <kristof.hermans.kh@gmail.com>",
   "main": "lib/index.cjs.js",
@@ -8,7 +8,7 @@
   "scripts": {
     "prebuild": "yarn clean",
     "build": "yarn build:cjs & yarn build:es",
-    "postbuild": "rm -rf '.rpt2_cache'",
+    "postbuild": "rm -rf '.rpt2_cache' lib/*.spec.d.ts lib/test-utils.d.ts",
     "build:cjs": "NODE_ENV=CJS rollup -c",
     "build:es": "NODE_ENV=ES rollup -c",
     "clean": "rm -rf node_modules lib",
