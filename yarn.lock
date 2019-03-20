@@ -810,6 +810,11 @@
     "@types/istanbul-lib-coverage" "^1.1.0"
     "@types/yargs" "^12.0.9"
 
+"@phixid/in-memory-store@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@phixid/in-memory-store/-/in-memory-store-1.0.0.tgz#8052fc7f04ceb42b2777b39cc8a3e0d7b67f3ac3"
+  integrity sha512-kTiRfJ46wrqw5wvN0PUHEOh6yxAmkTaKJiaNC4UI0qIbThUTyH/yj05RgB//SXVKVZT2ur+8ZC5vietEN81Duw==
+
 "@types/babel__core@^7.1.0":
   version "7.1.0"
   resolved "https://registry.yarnpkg.com/@types/babel__core/-/babel__core-7.1.0.tgz#710f2487dda4dcfd010ca6abb2b4dc7394365c51"
