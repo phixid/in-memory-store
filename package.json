@@ -3,14 +3,20 @@
   "version": "1.0.0",
   "description": "An in-memory data-store intended to be used as a simple cache",
   "author": "Kristof Hermans <kristof.hermans.kh@gmail.com>",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.es.js",
+  "main": "dist/@phixid/index.cjs.js",
+  "module": "dist/@phixid/index.es.js",
   "scripts": {
-    "build": "tsc",
+    "prebuild": "yarn clean",
+    "build": "yarn build:cjs & yarn build:es",
+    "postbuild": "rm -rf '.rpt2_cache'",
+    "build:cjs": "NODE_ENV=CJS rollup -c",
+    "build:es": "NODE_ENV=ES rollup -c",
+    "clean": "rm -rf node_modules dist",
+    "postclean": "yarn",
     "test": "jest --forceExit"
   },
   "repository": {
-    "url": "https://github.com/phixid/in-memory-store.git",
+    "url": "git+https://github.com/phixid/in-memory-store.git",
     "type": "GIT"
   },
   "license": "MIT",
@@ -24,6 +30,14 @@
     "@types/jest": "24.0.11",
     "babel-jest": "24.5.0",
     "jest": "24.5.0",
+    "rollup": "1.7.0",
+    "rollup-plugin-commonjs": "9.2.1",
+    "rollup-plugin-node-resolve": "4.0.1",
+    "rollup-plugin-typescript2": "0.20.1",
     "typescript": "3.3.4000"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/phixid/in-memory-store/issues"
+  },
+  "homepage": "https://github.com/phixid/in-memory-store#readme"
 }

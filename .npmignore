@@ -12,4 +12,7 @@ src/
 
 # Build
 .gitignore
-LICENSE
+babel.config.js
+rollup.config.js
+tsconfig.json
+yarn.lock
