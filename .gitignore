@@ -10,3 +10,5 @@ node_modules/
 # Build
 dist/
 lib/
+index.js
+index.d.ts
