@@ -3,10 +3,27 @@
   "version": "1.0.0",
   "description": "An in-memory data-store intended to be used as a simple cache",
   "author": "Kristof Hermans <kristof.hermans.kh@gmail.com>",
-  "main": "dist/index.js",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.es.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest --forceExit"
+  },
   "repository": {
     "url": "https://github.com/phixid/in-memory-store.git",
     "type": "GIT"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "7.4.0",
+    "@babel/node": "7.2.2",
+    "@babel/plugin-transform-runtime": "7.4.0",
+    "@babel/preset-env": "7.4.1",
+    "@babel/preset-typescript": "7.3.3",
+    "@babel/runtime": "7.4.0",
+    "@types/jest": "24.0.11",
+    "babel-jest": "24.5.0",
+    "jest": "24.5.0",
+    "typescript": "3.3.4000"
+  }
 }
