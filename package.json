@@ -1,0 +1,8 @@
+{
+  "name": "@phixid/in-memory-store",
+  "version": "1.0.0",
+  "description": "An in-memory data-store intended to be used as a simple cache",
+  "main": "dist/index.js",
+  "author": "Kristof Hermans <kristof.hermans.kh@gmail.com>",
+  "license": "MIT"
+}
