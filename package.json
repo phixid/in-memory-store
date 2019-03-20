@@ -1,6 +1,6 @@
 {
   "name": "@phixid/in-memory-store",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "An in-memory data-store intended to be used as a simple cache",
   "author": "Kristof Hermans <kristof.hermans.kh@gmail.com>",
   "main": "lib/index.cjs.js",
@@ -39,8 +39,5 @@
   "bugs": {
     "url": "https://github.com/phixid/in-memory-store/issues"
   },
-  "homepage": "https://github.com/phixid/in-memory-store#readme",
-  "dependencies": {
-    "@phixid/in-memory-store": "^1.0.0"
-  }
+  "homepage": "https://github.com/phixid/in-memory-store#readme"
 }
