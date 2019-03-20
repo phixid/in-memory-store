@@ -6,14 +6,15 @@
   "main": "lib/index.cjs.js",
   "module": "lib/index.es.js",
   "scripts": {
-    "prebuild": "yarn clean",
     "build": "yarn build:cjs & yarn build:es",
-    "postbuild": "rm -rf '.rpt2_cache' lib/*.spec.d.ts lib/test-utils.d.ts",
     "build:cjs": "NODE_ENV=CJS rollup -c",
     "build:es": "NODE_ENV=ES rollup -c",
     "clean": "rm -rf node_modules lib",
-    "postclean": "yarn",
-    "test": "jest --forceExit"
+    "declare": "cp lib/index.d.ts lib/index.cjs.d.ts && mv lib/index.d.ts lib/index.es.d.ts",
+    "test": "jest --forceExit",
+    "prebuild": "yarn clean",
+    "postbuild": "rm -rf '.rpt2_cache' lib/*.spec.d.ts lib/test-utils.d.ts && yarn declare",
+    "postclean": "yarn"
   },
   "repository": {
     "url": "git+https://github.com/phixid/in-memory-store.git",
