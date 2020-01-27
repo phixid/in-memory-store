@@ -40,6 +40,8 @@ export class Store {
 
     public set(key: string | number, value: unknown, expires?: number): void {
         if (typeof key === 'string' || typeof key === 'number') {
+            if (key === 'constructor' && typeof this._store[key] === 'function') return;
+            if (key === '__proto__') return;
             this._store[String(key)] = {
                 data: value,
                 expires: expires || Date.now() + this._expireTimeMs,
@@ -47,7 +49,9 @@ export class Store {
         }
     }
 
-    public get(key: string | number): null | StoreItem {
+    public get(key: string | number): StoreItem | null {
+        if (key === 'constructor' && typeof this._store[key] === 'function') return null;
+        if (key === '__proto__') return null;
         if (!this._store[key]) return null;
         if (!this._store[key].expires) return null;
         if (this._store[key].expires < Date.now()) return null;
@@ -60,6 +64,8 @@ export class Store {
     }
 
     public delete(key: string | number): void {
+        if (key === 'constructor' && typeof this._store[key] === 'function') return;
+        if (key === '__proto__') return;
         delete this._store[key];
     }
 
