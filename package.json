@@ -1,17 +1,16 @@
 {
   "name": "@phixid/in-memory-store",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "An in-memory data-store intended to be used as a simple cache",
   "author": "Kristof Hermans <kristof.hermans.kh@gmail.com>",
   "scripts": {
-    "build": "yarn build:cjs",
+    "build": "npm run build:cjs",
     "build:cjs": "NODE_ENV=CJS rollup -c",
     "build:es": "NODE_ENV=ES rollup -c",
     "clean": "rm -rf node_modules lib",
     "test": "jest --forceExit",
-    "prebuild": "yarn clean",
-    "postbuild": "rm -rf '.rpt2_cache' *.spec.d.ts test-utils.d.ts",
-    "postclean": "yarn"
+    "prebuild": "npm run clean && npm install",
+    "postbuild": "rm -rf '.rpt2_cache' *.spec.d.ts test-utils.d.ts"
   },
   "repository": {
     "url": "git+https://github.com/phixid/in-memory-store.git",

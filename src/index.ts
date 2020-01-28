@@ -22,7 +22,6 @@ export class Store {
         this._cleanIntervalMs = cleanIntervalSeconds * 1000;
         this._expireTimeMs = expireTimeSeconds * 1000;
 
-
         this.set = this.set.bind(this);
         this.get = this.get.bind(this);
         this.delete = this.delete.bind(this);
