@@ -7,7 +7,7 @@ const pkg = require('./package');
 const input = 'src/index.ts';
 const output = {
 	es: `lib/index.es.js`,
-	cjs: `index.js`
+	cjs: `lib/index.cjs.js`
 };
 const packageName = pkg.name.charAt(0).toUpperCase() + pkg.name.slice(1);
 const banner = `/*  ${packageName} v${pkg.version}

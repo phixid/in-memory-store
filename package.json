@@ -1,10 +1,13 @@
 {
   "name": "@phixid/in-memory-store",
-  "version": "1.0.8",
+  "version": "1.1.0",
   "description": "An in-memory data-store intended to be used as a simple cache",
   "author": "Kristof Hermans <kristof.hermans.kh@gmail.com>",
+  "license": "MIT",
+  "main": "lib/index.cjs.js",
+  "module": "lib/index.es.js",
   "scripts": {
-    "build": "npm run build:cjs",
+    "build": "npm run build:cjs && npm run build:es",
     "build:cjs": "NODE_ENV=CJS rollup -c",
     "build:es": "NODE_ENV=ES rollup -c",
     "clean": "rm -rf node_modules lib",
@@ -12,11 +15,6 @@
     "prebuild": "npm run clean && npm install",
     "postbuild": "rm -rf '.rpt2_cache' *.spec.d.ts test-utils.d.ts"
   },
-  "repository": {
-    "url": "git+https://github.com/phixid/in-memory-store.git",
-    "type": "GIT"
-  },
-  "license": "MIT",
   "devDependencies": {
     "@babel/core": "7.8.3",
     "@babel/node": "7.8.3",
@@ -36,5 +34,9 @@
   "bugs": {
     "url": "https://github.com/phixid/in-memory-store/issues"
   },
-  "homepage": "https://github.com/phixid/in-memory-store#readme"
+  "homepage": "https://github.com/phixid/in-memory-store#readme",
+  "repository": {
+    "url": "git+https://github.com/phixid/in-memory-store.git",
+    "type": "GIT"
+  }
 }
