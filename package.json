@@ -1,6 +1,6 @@
 {
   "name": "@phixid/in-memory-store",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "An in-memory data-store intended to be used as a simple cache",
   "author": "Kristof Hermans <kristof.hermans.kh@gmail.com>",
   "license": "MIT",
@@ -11,9 +11,9 @@
     "build:cjs": "NODE_ENV=CJS rollup -c",
     "build:es": "NODE_ENV=ES rollup -c",
     "clean": "rm -rf node_modules lib",
-    "test": "mocha -r ts-node/register './src/**/*.spec.ts'",
+    "test": "mocha -r ts-node/register './src/**/*.spec.ts' --exit",
     "prebuild": "npm run clean && npm install && npm run test",
-    "postbuild": "rm -rf '.rpt2_cache' *.spec.d.ts test-utils.d.ts"
+    "postbuild": "rm -rf '.rpt2_cache'"
   },
   "devDependencies": {
     "@babel/core": "7.8.3",
