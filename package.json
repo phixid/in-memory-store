@@ -1,8 +1,15 @@
 {
   "name": "@phixid/in-memory-store",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "An in-memory data-store intended to be used as a simple cache",
-  "keywords": ["memory", "store", "cache", "caching", "data-store", "simple"],
+  "keywords": [
+    "memory",
+    "store",
+    "cache",
+    "caching",
+    "data-store",
+    "simple"
+  ],
   "author": "Kristof Hermans <kristof.hermans.kh@gmail.com>",
   "license": "MIT",
   "main": "lib/index",
