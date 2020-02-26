@@ -11,7 +11,7 @@
     "strict": true,
     // Target latest version of ECMAScript.
     "target": "es2015",
-    "types": []
+    "types": ["chai", "mocha"]
   },
   "include": [
     "src/index.ts"

@@ -11,8 +11,8 @@
     "build:cjs": "NODE_ENV=CJS rollup -c",
     "build:es": "NODE_ENV=ES rollup -c",
     "clean": "rm -rf node_modules lib",
-    "test": "jest --forceExit",
-    "prebuild": "npm run clean && npm install",
+    "test": "mocha -r ts-node/register './src/**/*.spec.ts'",
+    "prebuild": "npm run clean && npm install && npm run test",
     "postbuild": "rm -rf '.rpt2_cache' *.spec.d.ts test-utils.d.ts"
   },
   "devDependencies": {
@@ -22,13 +22,15 @@
     "@babel/preset-env": "7.8.3",
     "@babel/preset-typescript": "7.8.3",
     "@babel/runtime": "7.8.3",
-    "@types/jest": "25.1.0",
-    "babel-jest": "25.1.0",
-    "jest": "25.1.0",
+    "@types/chai": "^4.2.9",
+    "@types/mocha": "^7.0.1",
+    "chai": "^4.2.0",
+    "mocha": "^7.1.0",
     "rollup": "1.30.1",
     "rollup-plugin-commonjs": "10.1.0",
     "rollup-plugin-node-resolve": "5.2.0",
     "rollup-plugin-typescript2": "0.25.3",
+    "ts-node": "^8.6.2",
     "typescript": "3.7.5"
   },
   "bugs": {

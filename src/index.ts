@@ -1,15 +1,5 @@
 const hourInSeconds = 3600;
 
-interface StoreItem {
-    data: unknown;
-    expires: number;
-}
-
-interface InternalStore {
-    [property: string]: StoreItem;
-    [property: number]: StoreItem;
-}
-
 export class Store {
     private _store: InternalStore;
     private _cleanInterval: any;
@@ -22,9 +12,11 @@ export class Store {
         this._cleanIntervalMs = cleanIntervalSeconds * 1000;
         this._expireTimeMs = expireTimeSeconds * 1000;
 
-        this.set = this.set.bind(this);
-        this.get = this.get.bind(this);
+        this.clear = this.clear.bind(this);
         this.delete = this.delete.bind(this);
+        this.get = this.get.bind(this);
+        this.getAll = this.getAll.bind(this);
+        this.set = this.set.bind(this);
 
         if (this._cleanIntervalMs !== 0) {
             this._cleanInterval = setInterval(() => {
@@ -35,6 +27,30 @@ export class Store {
                 });
             }, this._cleanIntervalMs);
         }
+    }
+
+    public clear(): void {
+        this._store = {};
+    }
+
+    public delete(key: string | number): void {
+        if (key === 'constructor' && typeof this._store[key] === 'function') return;
+        if (key === '__proto__') return;
+        delete this._store[key];
+    }
+
+    public get(key: string | number): StoreItem | null {
+        if (key === 'constructor' && typeof this._store[key] === 'function') return null;
+        if (key === '__proto__') return null;
+        if (!this._store[key]) return null;
+        if (!this._store[key].expires) return null;
+        if (this._store[key].expires < Date.now()) return null;
+
+        return this._store[key];
+    }
+
+    public getAll(): InternalStore {
+        return this._store;
     }
 
     public set(key: string | number, value: unknown, expires?: number): void {
@@ -48,34 +64,20 @@ export class Store {
         }
     }
 
-    public get(key: string | number): StoreItem | null {
-        if (key === 'constructor' && typeof this._store[key] === 'function') return null;
-        if (key === '__proto__') return null;
-        if (!this._store[key]) return null;
-        if (!this._store[key].expires) return null;
-        if (this._store[key].expires < Date.now()) return null;
-
-        return this._store[key];
-    }
-
-    public getAll(): {} {
-        return this._store;
-    }
-
-    public delete(key: string | number): void {
-        if (key === 'constructor' && typeof this._store[key] === 'function') return;
-        if (key === '__proto__') return;
-        delete this._store[key];
-    }
-
-    public clear(): void {
-        this._store = {};
-    }
-
     public getConfiguration(): { cleanIntervalMs: number; expireTimeMs: number } {
         return {
             cleanIntervalMs: this._cleanIntervalMs,
             expireTimeMs: this._expireTimeMs
         };
     }
+}
+
+interface StoreItem {
+    data: unknown;
+    expires: number;
+}
+
+interface InternalStore {
+    [property: string]: StoreItem;
+    [property: number]: StoreItem;
 }
