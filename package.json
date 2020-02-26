@@ -1,6 +1,6 @@
 {
   "name": "@phixid/in-memory-store",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "An in-memory data-store intended to be used as a simple cache",
   "keywords": [
     "memory",
@@ -13,7 +13,7 @@
   "author": "Kristof Hermans <kristof.hermans.kh@gmail.com>",
   "license": "MIT",
   "main": "lib/index",
-  "module": "lib/index",
+  "types": "lib/index.d.ts",
   "scripts": {
     "build": "npm run build:cjs && npm run build:es",
     "build:cjs": "NODE_ENV=CJS rollup -c",
