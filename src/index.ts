@@ -56,16 +56,20 @@ export class Store {
     };
   }
 
-  public memo(key: string | number, callback: () => any): any {
+  public async memo(key: string | number, callback: () => any | Promise<any> ): Promise<any> {
     if (!key || !callback) return null;
 
     const previousCachedValue = this.get(key);
     if (previousCachedValue) return previousCachedValue;
 
-    const newCachedValue = callback();
+    const callbackInvocation = callback();
+    let callbackResult;
 
-    this.set(key, newCachedValue);
-    return this.get(key);
+    if (callbackInvocation instanceof Promise) callbackResult = await callbackInvocation;
+    else callbackResult = callbackInvocation;
+
+    this.set(key, callbackResult);
+    return callbackResult;
   };
 
   public set(key: string | number, value: any, expires?: number): void {

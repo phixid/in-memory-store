@@ -94,22 +94,28 @@ describe('A generic store class', () => {
 
   describe('memo', () => {
     describe('when the store has a valid entry', () => {
-      it('checks the store for the provided key and returns the valid entry', () => {
+      it('checks the store for the provided key and returns the valid entry', async () => {
         testStore.set('user', testUser);
-        const actualUser = testStore.memo('user', () => {});
+        const actualUser = await testStore.memo('user',async () => {});
 
         expect(actualUser).to.equal(testUser);
       });
     });
 
     describe('when the store has no valid entry', () => {
-      it('invokes a provided callback, stores the return value and returns a store entry', () => {
-        const callback = fake.returns(43);
-        testStore.memo('invalidKey', callback);
+      it('invokes a provided callback, stores the return value and returns a store entry', async () => {
+        const callback = fake.returns(42);
+        const storedValue = await testStore.memo('invalidKey', callback);
 
-        const storedValue = testStore.get('invalidKey');
         expect(callback.called).to.equal(true);
-        expect(storedValue).to.equal(43);
+        expect(storedValue).to.equal(42);
+      });
+
+      it('waits for a Promise to be resolved before updating the store', async () => {
+        const callback = async () => 42;
+        const storedValue = await testStore.memo('invalidKey', callback);
+
+        expect(storedValue).to.equal(42);
       });
     });
   });
