@@ -14,13 +14,13 @@ const { Store } = require('@phixid/in-memory-store');
 ```
 
 for ES6 and above:
-```ecmascript 6
+```js
 import { Store } from '@phixid/in-memory-store';
 ```
 
 ### Basic Store
 A basic Store which will expire items after an hour and does not clean itself:
-```ecmascript 6
+```js
 const myPersonalStore = new Store();
 ```
 
@@ -35,20 +35,20 @@ to 0 (will not clean by default).
 
 ### <a name="set"></a> set
 Give it a key (string or number) and a value (any type) and it will put it in the Store.
-```ecmascript 6
+```js
 myPersonalStore.set('uniqueKey', 'this is going to be stored');
 ```
 
 ### <a name="get"></a> get
 Give it a key and it will retrieve the entry from the Store.
-```ecmascript 6
+```js
 myPersonalStore.get('uniqueKey');
 ```
 
 This gives you back an object containing the data and the time this data will be expired.
 If no entry was found for the given key, or the entry has already expired, this will return `null`.
 When a valid entry exists the output format will be something like:
-```ecmascript 6
+```js
 {
   data: 'this is going to be stored',
   expires: 1582724680622
@@ -58,7 +58,7 @@ When a valid entry exists the output format will be something like:
 ### <a name="delete"></a> delete
 Give it a key and it will delete the entry from the Store. This operation does not return anything.
 The next time you check the Store for an entry with this key, it will not be there.
-```ecmascript 6
+```js
 myPersonalStore.delete('uniqueKey');
 ```
 
@@ -67,6 +67,6 @@ This is an all in one operation. Give it a key and a callback function and it wi
 to get an entry from the Store. If this does not succeed because it does not exist 
 or it has already expired, it will invoke the callback and put the return value in the Store.
 The return type is the same as the the one from [get](#get).
-```ecmascript 6
+```js
 myPersonalStore.memo('uniqueKey', () => 'this will be stored if there is nothing stored already')
 ```
