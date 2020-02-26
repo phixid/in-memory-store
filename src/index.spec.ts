@@ -34,15 +34,7 @@ describe('A generic store class', () => {
       testStore.set('Kristof Hermans', testUser);
       const actualUser = testStore.get('Kristof Hermans');
 
-      expect(actualUser && actualUser.data).to.equal(testUser);
-    });
-
-    it('store entry gets a timestamp for invalidation', () => {
-      testStore.set('time-entry', testUser);
-      const actualUser = testStore.get('time-entry');
-
-      expect(actualUser && actualUser.data).to.equal(testUser);
-      expect(actualUser && actualUser.expires).to.be.above(Date.now());
+      expect(actualUser).to.equal(testUser);
     });
 
     it('key needs to be a string or a number', () => {
@@ -51,8 +43,8 @@ describe('A generic store class', () => {
       const actualUser = testStore.get('user');
       const actualUser2 = testStore.get(testIndex);
 
-      expect(actualUser && actualUser.data).to.equal(testUser);
-      expect(actualUser2 && actualUser2.data).to.equal(testUser);
+      expect(actualUser).to.equal(testUser);
+      expect(actualUser2).to.equal(testUser);
 
       // @ts-ignore
       testStore.set({ name: 'Kristof' }, testUser);
@@ -76,7 +68,7 @@ describe('A generic store class', () => {
       testStore.set('user', testUser);
       const actualUser = testStore.get('user');
 
-      expect(actualUser && actualUser.data).to.equal(testUser);
+      expect(actualUser).to.equal(testUser);
     });
 
     it('returns null when no key is passed to the getter', () => {
@@ -106,7 +98,7 @@ describe('A generic store class', () => {
         testStore.set('user', testUser);
         const actualUser = testStore.memo('user', () => {});
 
-        expect(actualUser && actualUser.data).to.equal(testUser);
+        expect(actualUser).to.equal(testUser);
       });
     });
 
@@ -117,9 +109,7 @@ describe('A generic store class', () => {
 
         const storedValue = testStore.get('invalidKey');
         expect(callback.called).to.equal(true);
-        expect(storedValue).to.have.property('data');
-        expect(storedValue).to.have.property('expires');
-        expect(storedValue?.data).to.equal(43);
+        expect(storedValue).to.equal(43);
       });
     });
   });

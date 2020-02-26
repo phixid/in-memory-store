@@ -45,15 +45,8 @@ Give it a key and it will retrieve the entry from the Store.
 myPersonalStore.get('uniqueKey');
 ```
 
-This gives you back an object containing the data and the time this data will be expired.
-If no entry was found for the given key, or the entry has already expired, this will return `null`.
-When a valid entry exists the output format will be something like:
-```js
-{
-  data: 'this is going to be stored',
-  expires: 1582724680622
-}
-```
+This give you back the value that is stored under the give key. If no entry was found 
+for the given key, or the entry has already expired, this will return `null`.
 
 ### <a name="delete"></a> delete
 Give it a key and it will delete the entry from the Store. This operation does not return anything.

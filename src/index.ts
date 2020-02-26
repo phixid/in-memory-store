@@ -38,11 +38,11 @@ export class Store {
     delete this._store[key];
   }
 
-  public get(key: string | number): StoreItem | null {
-    if (!this._store[key]?.expires) return null;
+  public get(key: string | number): any {
+    if (!this._store[key]?.expires || !this._store[key]?.data) return null;
     if (this._store[key].expires < Date.now()) return null;
 
-    return this._store[key];
+    return this._store[key].data;
   }
 
   public getAll(): InternalStore {
@@ -56,7 +56,7 @@ export class Store {
     };
   }
 
-  public memo(key: string | number, callback: () => any): StoreItem | null {
+  public memo(key: string | number, callback: () => any): any {
     if (!key || !callback) return null;
 
     const previousCachedValue = this.get(key);
@@ -79,12 +79,7 @@ export class Store {
   }
 }
 
-interface StoreItem {
-  data: unknown;
-  expires: number;
-}
-
 interface InternalStore {
-  [property: string]: StoreItem;
-  [property: number]: StoreItem;
+  [property: string]: any;
+  [property: number]: any;
 }
