@@ -12,6 +12,7 @@ src/
 
 # Build
 .gitignore
+.prettierrc
 babel.config.js
 jest.config.js
 rollup.config.js
