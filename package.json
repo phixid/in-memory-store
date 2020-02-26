@@ -5,8 +5,8 @@
   "keywords": ["memory", "store", "cache", "caching", "data-store", "simple"],
   "author": "Kristof Hermans <kristof.hermans.kh@gmail.com>",
   "license": "MIT",
-  "main": "lib/index.cjs.js",
-  "module": "lib/index.es.js",
+  "main": "lib/index",
+  "module": "lib/index",
   "scripts": {
     "build": "npm run build:cjs && npm run build:es",
     "build:cjs": "NODE_ENV=CJS rollup -c",
