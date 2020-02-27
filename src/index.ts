@@ -38,7 +38,7 @@ export class Store {
     delete this._store[key];
   }
 
-  public get(key: string | number): unknown {
+  public get(key: string | number): any {
     if (!this._store[key]?.expires || !this._store[key]?.data) return null;
     if (this._store[key].expires < Date.now()) return null;
 
@@ -56,7 +56,7 @@ export class Store {
     };
   }
 
-  public async memo(key: string | number, callback: () => unknown | Promise<unknown> ): Promise<unknown> {
+  public async memo(key: string | number, callback: () => any | Promise<any> ): Promise<any> {
     if (!key || !callback) return null;
 
     const previousCachedValue = this.get(key);
