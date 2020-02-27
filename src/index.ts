@@ -62,11 +62,7 @@ export class Store {
     const previousCachedValue = this.get(key);
     if (previousCachedValue) return previousCachedValue;
 
-    const callbackInvocation = callback();
-    let callbackResult;
-
-    if (callbackInvocation instanceof Promise) callbackResult = await callbackInvocation;
-    else callbackResult = callbackInvocation;
+    const callbackResult = await callback();
 
     this.set(key, callbackResult);
     return callbackResult;
