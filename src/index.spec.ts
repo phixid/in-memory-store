@@ -32,16 +32,16 @@ describe('A generic store class', () => {
   describe('set', () => {
     it('sets a value in store at a provided key', () => {
       testStore.set('Kristof Hermans', testUser);
-      const actualUser = testStore.get('Kristof Hermans');
+      const { data } = testStore.get('Kristof Hermans');
 
-      expect(actualUser).to.equal(testUser);
+      expect(data).to.equal(testUser);
     });
 
     it('key needs to be a string or a number', () => {
       testStore.set('user', testUser);
       testStore.set(testIndex, testUser);
-      const actualUser = testStore.get('user');
-      const actualUser2 = testStore.get(testIndex);
+      const { data: actualUser } = testStore.get('user');
+      const { data: actualUser2 } = testStore.get(testIndex);
 
       expect(actualUser).to.equal(testUser);
       expect(actualUser2).to.equal(testUser);
@@ -66,9 +66,9 @@ describe('A generic store class', () => {
   describe('get', () => {
     it('gets an entry from the store', () => {
       testStore.set('user', testUser);
-      const actualUser = testStore.get('user');
+      const { data } = testStore.get('user');
 
-      expect(actualUser).to.equal(testUser);
+      expect(data).to.equal(testUser);
     });
 
     it('returns null when no key is passed to the getter', () => {
@@ -96,9 +96,9 @@ describe('A generic store class', () => {
     describe('when the store has a valid entry', () => {
       it('checks the store for the provided key and returns the valid entry', async () => {
         testStore.set('user', testUser);
-        const actualUser = await testStore.memo('user',async () => {});
+        const { data } = await testStore.memo('user',async () => {});
 
-        expect(actualUser).to.equal(testUser);
+        expect(data).to.equal(testUser);
       });
     });
 

@@ -1,6 +1,6 @@
 {
   "name": "@phixid/in-memory-store",
-  "version": "1.2.9",
+  "version": "2.0.0",
   "description": "An in-memory data-store intended to be used as a simple cache",
   "keywords": [
     "memory",

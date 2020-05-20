@@ -42,7 +42,7 @@ export class Store {
     if (!this._store[key]?.expires || !this._store[key]?.data) return null;
     if (this._store[key].expires < Date.now()) return null;
 
-    return this._store[key].data;
+    return this._store[key];
   }
 
   public getAll(): InternalStore {
